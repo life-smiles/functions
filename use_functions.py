@@ -33,20 +33,30 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
-
+check_personal = 0
+history = []
 while True:
     print('1. пополнение счета')
     print('2. покупка')
     print('3. история покупок')
     print('4. выход')
 
-    choice = input('Выберите пункт меню')
+    choice = input('Выберите пункт меню: ')
     if choice == '1':
-        pass
+        cost = int(input('Введите сумму: '))
+        check_personal += cost
     elif choice == '2':
-        pass
+        cost = int(input('Введите сумму покупки: '))
+        if cost <= check_personal:
+            name = input('Введите название покупки: ')
+            history.append((name, cost))
+            check_personal -= cost
+            print(f'На вашем счете осталось {check_personal}')
+        else:
+            print('Недостаточно средств')
+
     elif choice == '3':
-        pass
+        print(f'Ваща история покупок: {history}')
     elif choice == '4':
         break
     else:
